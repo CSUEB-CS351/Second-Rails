@@ -10,9 +10,10 @@
 6. `docker-compose up -d` start our docker image
 7. `docker-compose run app rails new . --force --database=mysql` generate all the base rails application files.
 8. replaced the `config/database.yml` with `SavedFiles/database.yml`
-9. `docker-compose run app bin/rails db:create` to create the database
-10. `docker exec -it cs351Rails bash` enter the docker image 
-11. Create a new Homepage and About Us page:
+9. Install the new rails gems buy running `docker-compose run app bundle install`
+10. `docker-compose run app bin/rails db:create` to create the database
+11. `docker exec -it cs351Rails2 bash` enter the docker image 
+12. Create a new Homepage and Why travel with us page:
     1. `rails generate controller welcome index why` will create a welcome controller with 2 methods index and about, as well as the views to go with them. 
     2. Open the `config/routes.rb` file to see two new routes have been added `get 'welcome/index'` and `get 'welcome/why'`
     3. In a browser open `http://localhost:3001/welcome/index` to see the index page. `
@@ -23,7 +24,7 @@
     8. Edit `app/views/welcome/inaex.html.erb` by replacing the line `<img src="images/home-page-banner.jpg" alt="" title="Acme Adventure Travel" width="100%">` with `<%= image_tag 'home-page-banner.jpg', alt:"Family on a river raft", title:"Acme Adventure Travel", width:"100%" %>` This is a helper function that allows you to display images from the assests folder. 
     9. View the homepage again to see the fixed image.
     10. View the page source to see that the image file path contains a long sring of numbers.  This path will change everytime the image is updated to prevent the browswers from caching an outdated image file. 
-12. Updating the layout
+13. Updating the layout
     1. Replace the `app/views/layouts/applaction.html.erb`  layout template with the `SavedFiles/application.html.erb`. This layout will be the default layout for all pages unless otherwise specified. 
     2. Copy the `SavedFiels/logo-horizontal.png` into `app/assets/images/` 
     3. View the homepage.
